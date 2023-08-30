@@ -2,7 +2,7 @@ from pyspark import SparkConf, SparkContext
 import sys
 
 def compute_contribs(pair):
-    _, (links, rank) = pair
+    url, (links, rank) = pair
     num_links = len(links)
     for dest in links:
         yield (dest, rank / num_links)
