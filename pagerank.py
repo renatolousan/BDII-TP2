@@ -11,7 +11,7 @@ def main():
     conf = SparkConf().setAppName("PageRank")
     sc = SparkContext(conf=conf)
 
-    links = sc.textFile(sys.argv[1]).map(lambda line: tuple(line.split())).groupByKey().cache()
+    links = sc.textFile(sys.argv[1]).map(lambda line: tuple(line.split("\t"))).groupByKey().cache()
     ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0))
 
     NUM_ITERATIONS = 10
